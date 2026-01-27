@@ -1,0 +1,65 @@
+# Show all installed Python packages inside the active virtual environment
+pip list
+
+
+# Show only packages that have newer versions available (outdated packages)
+pip list --outdated
+
+
+# Upgrade a specific package (here: setuptools) to the latest available version
+# -U means "upgrade"
+pip install -U setuptools
+
+
+# Verify again that the package version is updated
+pip list
+
+
+# Install a new package from PyPI (Python Package Index)
+# Pympler is a package used for memory analysis
+pip install Pympler
+
+
+# List installed packages again to confirm Pympler is installed
+pip list
+
+
+# Show installed packages in "requirements format" (package==version)
+# Useful for recreating the same environment later
+pip freeze
+
+
+# Save the output of pip freeze into a file called requirements.txt
+# This file stores exact package versions
+pip freeze > requirements.txt
+
+
+# Display the contents of requirements.txt in the terminal
+cat requirements.txt
+
+
+# Display another requirements-style file (example shown in video)
+# This file contains multiple dependencies with fixed versions
+cat r_test.txt
+
+
+# Install all packages listed inside r_test.txt
+# -r means "read from file"
+pip install -r r_test.txt
+
+
+# Check again that all packages from the file are installed successfully
+pip list
+
+
+# Show outdated packages again after installation
+pip list --outdated
+
+
+# Advanced command shown in video (used to upgrade ALL packages)
+# Step-by-step meaning:
+# 1) pip freeze --local        → list locally installed packages
+# 2) grep -v '^\-e'            → remove editable installs
+# 3) cut -d = -f 1             → extract only package names
+# 4) xargs -n1 pip install -U  → upgrade each package one by one
+pip freeze --local | grep -v '^\-e' | cut -d = -f 1 | xargs -n1 pip install -U
