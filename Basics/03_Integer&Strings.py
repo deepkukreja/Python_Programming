@@ -59,4 +59,18 @@ print(num_1 + num_2)
 num_1 = int(num_1)
 num_2 = int(num_1)
 print(num_1 + num_2)
+
 '''
+
+
+
+
+# Taking use input 
+a = input("Enter First number")
+b = input("Enter second number")
+
+a = int(a)
+b = int(b)
+
+c = a+b
+print(c)
