@@ -77,35 +77,3 @@ print(i)
 
 
 
-# 1. Iterating over a range of numbers
-print("Iteration using range():")
-for i in range(1, 6):
-    print(i)
-
-print("-" * 20)
-
-# 2. Iterating over a list
-fruits = ["apple", "banana", "mango"]
-print("Iteration over a list:")
-for fruit in fruits:
-    print(fruit)
-
-print("-" * 20)
-
-# 3. Iterating over a string
-word = "Python"
-print("Iteration over a string:")
-for char in word:
-    print(char)
-
-print("-" * 20)
-
-# 4. Using for loop with break and continue
-print("Using break and continue:")
-for num in range(1, 11):
-    if num == 5:
-        continue  # skips 5
-    if num == 9:
-        break     # stops loop at 9
-    print(num)
-
