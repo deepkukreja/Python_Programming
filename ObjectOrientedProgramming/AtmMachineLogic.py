@@ -1,5 +1,5 @@
 class ATM:
-    def __init__(self):
+    def __init__(self): #__init__() — runs automatically
         self.pin = ''
         self.balance = 0
         self.menu()
@@ -63,3 +63,4 @@ Hello, how would you like to proceed?
 
 
 atm = ATM()
+
