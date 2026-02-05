@@ -1,10 +1,11 @@
 class ATM:
-    def __init__(self): #__init__() — runs automatically
-        self.pin = ''
-        self.balance = 0
-        self.menu()
+    def __init__(self):
+        self.__pin = ""
+        self.__balance = 0
+        self.__menu()
 
-    def menu(self):
+    # private menu
+    def __menu(self):
         while True:
             user_input = input("""
 Hello, how would you like to proceed?
@@ -29,37 +30,49 @@ Hello, how would you like to proceed?
             else:
                 print("Invalid choice")
 
+    # public methods
     def create_pin(self):
-        self.pin = input("Enter your pin: ")
+        self.__pin = input("Enter your pin: ")
         print("Pin set successfully")
 
     def deposit(self):
-        temp_pin = input("Enter your pin: ")
-        if temp_pin == self.pin:
+        if self.__validate_pin():
             amount = int(input("Enter the amount: "))
-            self.balance += amount
+            self.__balance += amount
             print("Deposit successful")
-        else:
-            print("Invalid pin")
 
     def withdraw(self):
-        temp_pin = input("Enter your pin: ")
-        if temp_pin == self.pin:
+        if self.__validate_pin():
             amount = int(input("Enter the amount: "))
-            if amount <= self.balance:
-                self.balance -= amount
+            if amount <= self.__balance:
+                self.__balance -= amount
                 print("Operation successful")
             else:
                 print("Insufficient funds")
-        else:
-            print("Invalid pin")
 
     def check_balance(self):
+        if self.__validate_pin():
+            print("Balance:", self.__balance)
+
+    # private pin validation
+    def __validate_pin(self):
         temp_pin = input("Enter your pin: ")
-        if temp_pin == self.pin:
-            print("Balance:", self.balance)
+        if temp_pin == self.__pin:
+            return True
+        print("Invalid pin")
+        return False
+
+    # getter
+    def get_pin(self):
+        return "Not allowed"
+
+    # setter
+    def set_pin(self, new_pin):
+        if type(new_pin) == str:
+            self.__pin = new_pin
+            print("Pin changed")
         else:
-            print("Invalid pin")
+            print("Not allowed")
 
 
 atm = ATM()
